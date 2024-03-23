@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply font-raleway;
+}
+
 .container{
     @apply max-w-[90rem] p-6 w-full mx-auto;
 }
@@ -14,7 +18,7 @@
 }
 
 .container {
-    @apply w-full w-full mr-auto ml-auto pr-[15px] pl-[15px];
+    @apply w-full mr-auto ml-auto pr-[15px] pl-[15px];
 }
 
 .header__wrapper {
@@ -39,7 +43,7 @@
 }
 
 .header__contact ul {
-    @apply flex items-center;
+    @apply flex items-center box-border;
 }
 
 .header__contact ul li {
@@ -47,17 +51,69 @@
 }
 
 .header__contact ul li i {
-    @apply font-[900];
+    @apply font-[900] mr-3;
 }
 
 .header__contact li a.fb {
-    @apply bg-clrBlue hover:bg-[#1573e5] border text-white;
+    @apply bg-clrBlue hover:bg-[#1573e5] border text-white block
+    px-6 py-2;
 }
 
 .header__contact li a.faq {
     @apply bg-white hover:bg-clrDarkgreen hover:text-white outline-1 
-    text-black
+    text-black block border-black px-6 py-2 border-[1px];
 }
+
+/* --------------------------------NAV--------------------------------------------------------- */
+
+nav {
+    @apply absolute top-[114px] z-10 bg-white h-screen lg:h-auto -right-[100%] lg:right-0
+    w-full lg:block lg:static ease-in-out duration-500 transition-all
+}
+
+nav.active {
+    @apply right-0 flex flex-col;
+}
+
+nav.active ul li {
+    @apply border-0;
+}
+
+nav ul {
+    @apply lg:flex lg:justify-between uppercase
+}
+
+nav ul li {
+    @apply relative mt-[1.25rem] my-5 w-full border-gray-300
+    border-solid p-[0.1rem] border-r-2 
+}
+
+nav a {
+    @apply p-2
+}
+
+
+nav ul li a {
+    @apply my-0 
+}
+
+nav ul li:nth-child(7) {
+    @apply border-r-0;
+}
+
+nav a {
+    @apply block text-center text-clrDarkgray
+}
+
+nav ul li:last-child a {
+    @apply ml-auto mr-auto w-[113px] rounded-md p-2 text-center text-white
+    bg-clrYellow
+}
+
+nav ul i {
+    @apply mr-3
+}
+
 
 
 /* --------------------------------BURGER BUTTON--------------------------------------------------------- */
@@ -65,45 +121,133 @@
     @apply lg:hidden;
 }
 
+.burgir__menu.active {
+    @apply rotate-180 transition-all duration-500 ease-in-out leading-relaxed;
+}
+
 .burgir__menu span {
-    @apply w-[40px] h-[0.375rem] bg-gray-700 m-[4px] block rounded-full transition-all;
+    @apply w-[40px] h-[0.375rem] bg-gray-700 m-[4px] block rounded-full transition-all
+    cursor-pointer box-border border-solid border-["#e5e7eb"];
 }
 
 .header__wrapper {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-between border-b-[1px];
+}
+
+.burgir__menu.active span:last-child {
+    @apply transform translate-x-[-0.1rem] translate-y-[-0.1rem] rotate-[38deg]
+    transition-all duration-500 ease-out
+    w-[1.70rem]
+}
+
+.burgir__menu.active span {
+    @apply rounded-sm
+    border-none
+}
+
+.burgir__menu.active span:first-child {
+    @apply transform translate-x-[-0.1rem] translate-y-[0.1rem] rotate-[-38deg]
+    transition-all duration-500 ease-out
+    w-[1.70rem]
+}
+
+.burgir__menu.active span:nth-child(2) {
+    @apply ml-[5]
 }
 
 /* --------------------------------Frequently Asked Questions--------------------------------------------------------- */
 .faq {
-    @apply py-[130px] lg:py-[90px]
-}
-.faq .faq__wrapper h2{
-    @apply text-4xl font-[200] text-center mb-24 font-extralight text-clrDarkgray
-    mb-[6rem] leading-6
+    @apply py-[130px] lg:py-[50px];
 }
 
-.faq__details {
+.faq h2{
+    @apply text-4xl text-center mb-28 font-extralight leading-9 opacity-70 lg:text-6xl text-black
+    md:mt-[5rem] lg:mt-2;
+}
+
+.faq__wrapper {
     @apply md:grid md:grid-cols-[_1fr,_3fr]
 }
+
 
 .faq__details ul {
     @apply text-xl text-center mb-24 md:text-left
 }
 
 .faq__details li {
-    @apply cursor-pointer my-3 text-clrDarkgreen
+    @apply my-3 text-clrDarkgray
 }
 
+.faq__details li.active {
+    @apply cursor-pointer my-3 text-clrDarkgreen underline
+}
 
+/* --------------------------------FAQ MENU CONTENT--------------------------------------------------------- */
+.faq__block.active {
+    @apply block transition-all;
+}
 
+.faq__block {
+    @apply leading-9 hidden transition-all;
+}
 
+.faq__block h3 {
+    @apply text-2xl mb-10;
+}
 
+.faq__item {
+    @apply mb-4 bg-clrGray py-[0rem] px-3 relative transition-all block;
+}
 
+.fa-chevron-down {
+    @apply absolute text-xl top-3 right-5 transition-all;
+}
 
+.fa-circle {
+    @apply text-clrDarkgreen mr-3
+}
 
+.fa-regular {
+    @apply bg-white border-black;
+}
 
+.faq__item ul li {
+    @apply mb-2.5
+}
 
+/* JAVASCRIPT ACCORDION*/
+.faq__answer {
+    @apply max-h-[0rem] md:max-h-[0rem] overflow-hidden ease-out duration-[0.5s] my-[2rem];
+}
 
+.faq__item.active  .faq__answer{
+    @apply max-h-[50rem] ease-in duration-[0.5s] my-[2rem];
+}
+
+.faq__item.active i {
+    @apply rotate-180 ease-in-out duration-[0.5s];
+  }
+
+.faq__question h4 {
+    @apply font-semibold text-base md:text-lg w-[80%] pt-3;
+}
+
+.faq__question span {
+    @apply text-clrDarkgreen text-2xl
+    font-bold hidden md:inline-block
+}
+
+.faq__answer p {
+    @apply mb-2;
+}
+
+.faq__answer a {
+    @apply text-clrDarkgreen;
+}
+
+.faq__answer li::before {
+    @apply content-[""]
+}
 
 /* --------------------------------FOOTER--------------------------------------------------------- */
     .footer {
@@ -152,7 +296,7 @@
 
     .footer__buttons a.footer__faq{
         @apply w-[200px] hover:bg-clrYellow hover:text-white my-2 mx-auto
-        border-clrLightgreen
+        border-clrLightgreen outline-1 text-black border-black border
      }
 
      .footer__bottom {
@@ -173,8 +317,8 @@
 
     @layer utilities {
         .btn {
-            @apply inline-block py-[.5rem] px-[.5rem] rounded-full border-transparent border-[1px] 
-            text-sm font-medium hover:scale-[1.1]
+            @apply inline-block p-2 border-transparent border-[1px] 
+            text-sm font-medium rounded-md
         }
 
         .btn.bg--dark {
@@ -192,7 +336,7 @@
 
         .btn--footer {
             @apply inline-block py-[.5rem] px-[.5rem] rounded-md border-transparent border-[1px] 
-            text-sm font-medium hover:scale-[1.1]
+            text-sm font-medium outline-1 text-black border-black border
         }
         
 }

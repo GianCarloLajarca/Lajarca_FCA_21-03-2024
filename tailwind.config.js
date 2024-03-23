@@ -1,9 +1,9 @@
 module.exports = {
   content: ["./dist/**/*.{html,js}"],
   theme: {
-    // fontFamily: {
-    //   'raleway': 'Raleway, Arial, sans-serif',
-    // }
+    fontFamily: {
+      'raleway': ['Raleway', 'sans-serif'],
+    },
     extend: {
       backgroundImage: {
         insightBanner: "url(/dist/img/banner-img.png)",
